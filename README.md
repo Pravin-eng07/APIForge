@@ -40,8 +40,3 @@ APIForge provides a simple workspace for creating API requests
 and inspecting their responses.
 
 ## ⚙️ Installation
-
-Clone the repository:
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
