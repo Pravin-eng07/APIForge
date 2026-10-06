@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     );
   }, [history]);
 
-  const sendRequest = async () => {
+  const sendRequest = useCallback(async () => {
     if (!url.trim()) {
       setError("Please enter an API URL.");
       return;
@@ -114,7 +114,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [url, headers, requestBody, method]);
 
   // Global Ctrl + Enter shortcut
   useEffect(() => {
@@ -136,7 +136,7 @@ function App() {
         handleGlobalKeyDown
       );
     };
-  }, [url, headers, requestBody, method]);
+  }, [url, headers, requestBody, method, sendRequest]);
 
   const copyResponse = async () => {
     if (!response) return;
